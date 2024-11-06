@@ -11,7 +11,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        //
+        return view("activities.index");
     }
 
     /**
@@ -19,7 +19,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+        return view("activities.create");
     }
 
     /**
@@ -35,7 +35,7 @@ class ActivityController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view("activities.show");
     }
 
     /**
@@ -43,7 +43,7 @@ class ActivityController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view("activities.edit");
     }
 
     /**
