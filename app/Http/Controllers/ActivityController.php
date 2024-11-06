@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Activity;
 
 class ActivityController extends Controller
 {
@@ -27,7 +28,21 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'type' => ['required', 'string'],
+            'datetime' => ['required', 'date'],
+            'notes' => ['required', 'string']
+        ]);
+
+        Activity::create([
+            'type' => $request->input('type') ,
+            'user_id' => $request->user()->id,
+            'datetime' => $request->input('datetime'),
+            'notes' => $request->input('notes')
+        ]);
+
+        return redirect(route("activities.index"));
     }
 
     /**
