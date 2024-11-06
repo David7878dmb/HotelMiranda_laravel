@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
 
+        $table->id()->primary();
+
         $table->enum('type', ['surf', 'windsurf', 'kayak', 'atv', 'hot air balloon']);
 
         $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
