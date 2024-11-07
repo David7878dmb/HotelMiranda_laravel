@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1><strong>PAN PERO EN SHOW</strong></h1>
+    <p><strong> Tipo: </strong> {{$activity->type}} </p>
+    <p><strong> Fecha: </strong> {{$activity->datetime}} </p>
 </body>
 </html>

@@ -51,7 +51,7 @@ class ActivityController extends Controller
      */
     public function show(string $id)
     {
-        return view("activities.show");
+        return view("activities.show", ['activity' => Activity::findOrFail($id)]);
     }
 
     /**
