@@ -59,7 +59,7 @@ class ActivityController extends Controller
      */
     public function edit(string $id)
     {
-        return view("activities.edit");
+        return view("activities.edit", ['activity' => Activity::findOrFail($id)]);
     }
 
     /**
@@ -67,7 +67,21 @@ class ActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $activity = Activity::findOrFail($id);
+
+        $request->validate([
+            'type' => ['required', 'string'],
+            'datetime' => ['required', 'date'],
+            'notes' => ['required', 'string']
+        ]);
+
+        $activity->update([
+            'type' => $request->input('type') ,
+            'datetime' => $request->input('datetime'),
+            'notes' => $request->input('notes')
+        ]);
+
+        return redirect()->route('activities.show', $activity->id)->with('success', 'Actividad actualizada correctamente.');
     }
 
     /**
@@ -75,6 +89,10 @@ class ActivityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $activity = Activity::findOrFail($id);
+
+        $activity->delete();
+
+        return redirect()->route('activities.index')->with('success', 'Actividad Borrada correctamente.');
     }
 }

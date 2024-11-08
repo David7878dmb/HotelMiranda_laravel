@@ -9,5 +9,10 @@
     <h1><strong>PAN PERO EN SHOW</strong></h1>
     <p><strong> Tipo: </strong> {{$activity->type}} </p>
     <p><strong> Fecha: </strong> {{$activity->datetime}} </p>
+    <form action="{{ route('activities.destroy', $activity->id)}}" method="POST">
+        @csrf   
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('¿Esta seguro de eliminar')">Borrar</button>
+    </form>
 </body>
 </html>
