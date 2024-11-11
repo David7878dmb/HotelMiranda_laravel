@@ -8,9 +8,9 @@
 <body>
     <h1><strong>PAN</strong></h1>
     @foreach($activities as $activity)
+    <hr></hr>
     <p><strong> Tipo: </strong> {{$activity->type}} </p>
     <p><strong> Fecha: </strong> {{$activity->datetime}} </p>
-    <hr></hr>
     @endforeach
 </body>
 </html>
