@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Activity;  
 use Faker\Factory as FakerFactory;
+use App\Models\User;
 
 class ActivitySeeder extends Seeder
 {
@@ -23,7 +24,8 @@ class ActivitySeeder extends Seeder
                 'datetime' => $faker->dateTimeBetween('-1 year', 'now'),
                 'paid' => $faker->boolean(70),
                 'notes' => $faker->text(100),
-                'satisfaction' => $faker->numbeBetween(1, 5),
+                'satisfaction' => $faker->numberBetween(1, 5),
+
             ];
         }
         Activity::insert($activities);
