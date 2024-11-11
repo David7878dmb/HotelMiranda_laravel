@@ -22,6 +22,12 @@ class UserSeeder extends Seeder{
                 'password' => Hash::make('12345678'),
 
             ],
+            [
+                'name' => 'david',
+                'email' => 'david@gmail.com',
+                'password' => Hash::make('12345678'),
+
+            ],
         ];
 
         foreach ($users as $user) {
