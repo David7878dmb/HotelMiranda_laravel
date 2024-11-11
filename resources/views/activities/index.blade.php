@@ -10,6 +10,7 @@
     @foreach($activities as $activity)
     <p><strong> Tipo: </strong> {{$activity->type}} </p>
     <p><strong> Fecha: </strong> {{$activity->datetime}} </p>
+    <hr></hr>
     @endforeach
 </body>
 </html>
