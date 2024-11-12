@@ -57,5 +57,7 @@
     <br/>
     <button type="submit">AAAAAAAAAAAAAAA</button>
     </form>
+    <hr>
+    <a href="{{route('room.index')}}"><strong>Volver</strong></a>
 </body>
 </html>

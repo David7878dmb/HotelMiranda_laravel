@@ -56,9 +56,9 @@ use Illuminate\Support\Facades\Auth;
     /**
      * Display the specified resource.
      */
-    public function show(Room $room)
+    public function show(string $id)
     {
-        //
+        return view("room.show",['room' => Room::findOrFail($id)]);
     }
 
     /**

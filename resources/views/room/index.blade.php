@@ -8,6 +8,8 @@
 <body>
     <h1><strong>Rooms Index</strong></h1>
 
+    <a href="{{route('room.create')}}"><strong>Create Room</strong></a>
+
     @foreach($rooms as $room)
     <hr></hr>
     <p><strong> Tipo: </strong> {{$room->room_type}} </p>
@@ -19,7 +21,7 @@
     <p><strong> Tipo: </strong> {{$room->discount}} </p>
     <p><strong> Tipo: </strong> {{$room->facilities}} </p>
     
-
+    <a href="{{route('room.show', $room->id)}}">Show Room</a>
     @endforeach
 
 </body>
