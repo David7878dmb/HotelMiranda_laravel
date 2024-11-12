@@ -18,6 +18,16 @@
     <p><strong> Tipo: </strong> {{$room->discount}} </p>
     <p><strong> Tipo: </strong> {{$room->facilities}} </p>
 
-    
+    <a href="{{route('room.index')}}">Volver al listado de Rooms</a>
+    <br/>
+    <br/>
+    <a href="{{route('room.edit', $room->id)}}">Edit Room</a>
+    <br/>
+    <br/>
+    <form action="{{ route('room.destroy', $room->id)}}" method="POST">
+        @csrf   
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('¿Esta seguro de eliminar')">Borrar</button>
+    </form>
 </body>
 </html>
