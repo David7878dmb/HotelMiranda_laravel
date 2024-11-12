@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{route('activities.index')}}">Activity</a>
-    <br></br>
-    <a href="{{route('room.index')}}">Room</a>
+    <h1><strong>PAN</strong></h1>
+    
+
 </body>
 </html>
