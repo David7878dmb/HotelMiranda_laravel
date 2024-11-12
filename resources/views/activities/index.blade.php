@@ -7,10 +7,14 @@
 </head>
 <body>
     <h1><strong>PAN</strong></h1>
+    
+    <a href="{{route('activities.create')}}">Create Activity</a>
+   
     @foreach($activities as $activity)
     <hr></hr>
     <p><strong> Tipo: </strong> {{$activity->type}} </p>
     <p><strong> Fecha: </strong> {{$activity->datetime}} </p>
+    <a href="{{route('activities.show', $activity->id)}}">Show Activity</a>
     @endforeach
 </body>
 </html>

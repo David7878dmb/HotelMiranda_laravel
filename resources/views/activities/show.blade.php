@@ -13,6 +13,7 @@
         @csrf   
         @method('DELETE')
         <button type="submit" onclick="return confirm('¿Esta seguro de eliminar')">Borrar</button>
+        <a href="{{route('activities.edit', $activity->id)}}">Edit Activity</a>
     </form>
 </body>
 </html>

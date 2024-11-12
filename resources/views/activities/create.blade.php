@@ -20,6 +20,7 @@
         <input name="notes" type="text" placeholder="Note"/>
         <button type="submit">AAAAAAAAAAAAAAA</button>
     </form>
-    
+    <br></br>
+    <a href="{{route('activities.index')}}">Volver</a>
 </body>
 </html>
