@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1><strong>Index Contact</strong></h1>  
+
+    <a href="{{ route('contact.create') }}">Create Contact</a>
 </body>
 </html>
