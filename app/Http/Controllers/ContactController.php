@@ -53,9 +53,9 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contact $contact)
+    public function show(string $id)
     {
-        //
+        return view("contact.show", ["contact" => Contact::findOrFail($id)]);
     }
 
     /**

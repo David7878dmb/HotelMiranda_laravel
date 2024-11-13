@@ -17,6 +17,8 @@
     <p><strong>Email:</strong>{{$contact->email}}</p>
     <p><strong>Asunto:</strong>{{$contact->subject}}</p>
     <p><strong>Mensaje:</strong>{{$contact->text}}</p>
+    <a href="{{ route('contact.show', $contact->id) }}">Ver Contacto</a>
+    <hr>
     @endforeach
 </body>
 </html>
