@@ -51,7 +51,7 @@ use Illuminate\Support\Facades\Auth;
             'picture' => 'asdasdasd',
             'facilities' => json_encode(['WIFI'])
         ]);
-
+        return redirect()->route('room.index')->with('success', 'Room Creada Correctamente');
     }
 
     /**
