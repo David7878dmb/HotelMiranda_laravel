@@ -61,17 +61,36 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contact $contact)
+    public function edit(string $id)
     {
-        //
+        return view("contact.edit", ["contact" => Contact::findOrFail($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, string $id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+
+        $request->validate([
+            "name" => ['required', 'string'],
+            "phone" => ['required', 'string'],
+            "email" => ['required', 'string'],
+            "subject" => ['required', 'string'],
+            "text" => ['required', 'string'],
+        ]);
+
+        $contact->update([
+            "name" => $request->input('name'), 
+            "phone" => $request->input('phone'), 
+            "email" => $request->input('email'), 
+            "subject" => $request->input('subject'), 
+            "text" => $request->input('text'), 
+            "read" => false,
+         ]);
+
+         return redirect()->route('contact.show',$contact->id)->with('success','Contact Editado Correctamente');
     }
 
     /**
