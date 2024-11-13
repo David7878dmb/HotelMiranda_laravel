@@ -12,14 +12,14 @@
 
     @foreach($rooms as $room)
     <hr></hr>
-    <p><strong> Tipo: </strong> {{$room->room_type}} </p>
-    <p><strong> Tipo: </strong> {{$room->number}} </p>
-    <p><strong> Tipo: </strong> {{$room->bed_type}} </p>
-    <p><strong> Tipo: </strong> {{$room->room_floor}} </p>
-    <p><strong> Tipo: </strong> {{$room->status}} </p>
-    <p><strong> Tipo: </strong> {{$room->rate}} </p>
-    <p><strong> Tipo: </strong> {{$room->discount}} </p>
-    <p><strong> Tipo: </strong> {{$room->facilities}} </p>
+    <p><strong> Tipo de habitación: </strong> {{$room->room_type}} </p>
+    <p><strong> Numero de habitación: </strong> {{$room->number}} </p>
+    <p><strong> Tipo de cama: </strong> {{$room->bed_type}} </p>
+    <p><strong> Piso: </strong> {{$room->room_floor}} </p>
+    <p><strong> Stado: </strong> {{$room->status}} </p>
+    <p><strong> Precio: </strong> {{$room->rate}} </p>
+    <p><strong> Descuento: </strong> {{$room->discount}} </p>
+    <p><strong> Cosas: </strong> {{$room->facilities}} </p>
     
     <a href="{{route('room.show', $room->id)}}">Show Room</a>
     @endforeach
