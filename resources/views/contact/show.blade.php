@@ -16,6 +16,16 @@
     <p><strong>Mensaje:</strong>{{$contact->text}}</p>
 
     <hr>
+<a href="{{route('contact.edit', $contact->id)}}">Editar Contact</a>
+    <br>
+    <br>
+<form method="POST" action="{{route('contact.destroy', $contact->id)}}">
+@csrf
+@method('DELETE')
+<button type="submit" onclick="return confirm('¿Esta seguro de eliminar')">Borrar</button>
+</form>
+    <br>
+    <br>
 <a href="{{ route('contact.index') }}">Volver al Index</a>
 </body>
 </html>
