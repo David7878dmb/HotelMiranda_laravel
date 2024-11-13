@@ -30,7 +30,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => ['required', 'string'],
+            "phone" => ['required', 'string'],
+            "email" => ['required', 'string'],
+            "subject" => ['required', 'string'],
+            "text" => ['required', 'string'],
+        ]);
+
+        Contact::create([
+           "name" => $request->input('name'), 
+           "phone" => $request->input('phone'), 
+           "email" => $request->input('email'), 
+           "subject" => $request->input('subject'), 
+           "text" => $request->input('text'), 
+           "read" => false,
+        ]);
+
+        return redirect()->route('contact.index')->with('success', 'Contact Creado Correctamente');
     }
 
     /**
