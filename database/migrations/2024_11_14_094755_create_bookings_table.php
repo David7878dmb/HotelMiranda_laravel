@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->decimal('discount', 5, 2); 
             $table->json('notes')->nullable(); 
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');     
-            $table->string('status',['Booked','Pending','Refund','Cancelled']);
+            $table->enum('status',['Booked','Pending','Refund','Cancelled']);
             $table->timestamps();
         });
     }
