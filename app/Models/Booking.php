@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Booking extends Model
 {
-    protected $filleable = [
+    protected $fillable = [
         'guest',
         'picture',
         'order_date',

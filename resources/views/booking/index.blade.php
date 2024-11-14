@@ -28,7 +28,7 @@
                     <img src="{{ $booking->picture }}" alt="Imagen del cliente" class="img-fluid rounded" style="max-width: 200px;">
                 </div>
             @endif
-            <hr>
+           
             <div class="mb-3">
                 <h5>Detalles Adicionales</h5>
                 <p><strong>Comentarios:</strong></p>
@@ -48,6 +48,7 @@
                 </p>
             </div>
         </div>
+        <hr>
         @endforeach
     </div>
 </div>

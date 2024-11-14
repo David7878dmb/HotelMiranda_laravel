@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,9 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('booking.create');
+        
+        return view('booking.create',["rooms" => Room::all()]);
+
     }
     
     /**
@@ -29,30 +32,31 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             "guest" => ['required','string'],
-            "picture" => ['required','string'],
-            "order_date" => ['required','date'],
+
             "check_in" => ['required','date'],
             "check_out" =>['required','date'],
-            "decimal" => ['required','numeric'],
-            "notes" => ['required','array'],
+            "discount" => ['required','numeric'],
+            "notes" => ['required','string'],
             "status" => ['required','string'],
-            "room_id" => ['required',]
+            "room_id" => ['required','numeric']
         ]);
         
         Booking::create([
             'guest' => $request->input('guest'),
             'picture' => $request->input('picture'),
-            'order_date' => $request->input('order_date'),
+            'order_date' => now(),
             'check_in' => $request->input('check_in'),
             'check_out' => $request->input('check_out'),
             'discount' => $request->input('discount'),
             'notes' => json_encode($request->input('notes')), 
             'status' => $request->input('status'),
-            'room_id' => $request->room()->id, 
+            'room_id' => $request->input('room_id')
         ]);
-
+        
+        return redirect(route("booking.index"))->with('success', 'Creado correctamente.');
         
     }
 
