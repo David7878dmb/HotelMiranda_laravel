@@ -48,5 +48,10 @@
             </div>
         </div>
         <hr>
+        <form method="POST" action="{{route('booking.destroy', $booking->id)}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="return confirm('¿Esta seguro de eliminar')">Borrar</button>
+        </form>
     </div>
 </div>
