@@ -59,35 +59,60 @@ class BookingController extends Controller
         return redirect(route("booking.index"))->with('success', 'Creado correctamente.');
         
     }
-
+    
     /**
      * Display the specified resource.
      */
-    public function show(Booking $booking)
+    public function show(string $id)
     {
-        //
+        return view("booking.show",['booking' => Booking::findOrFail($id)]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Booking $booking)
+    public function edit(string $id)
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, string $id)
     {
+        $request->validate([
+            "guest" => ['required','string'],
+    
+            "check_in" => ['required','date'],
+            "check_out" =>['required','date'],
+            "discount" => ['required','numeric'],
+            "notes" => ['required','string'],
+            "status" => ['required','string'],
+            "room_id" => ['required','numeric']
+        ]); 
+        
+        Booking::create([
+            'guest' => $request->input('guest'),
+            'picture' => $request->input('picture'),
+            'order_date' => now(),
+            'check_in' => $request->input('check_in'),
+            'check_out' => $request->input('check_out'),
+            'discount' => $request->input('discount'),
+            'notes' => json_encode($request->input('notes')), 
+            'status' => $request->input('status'),
+            'room_id' => $request->input('room_id')
+        ]);
+        
+        return redirect()->route('booking.show',$booking->id)->with('success','Boooking Actualizada Correctamente.');
+        
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Booking $booking)
+    public function destroy(string $id)
     {
         //
     }
