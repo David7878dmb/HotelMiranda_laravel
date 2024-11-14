@@ -73,7 +73,7 @@ class BookingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('booking.edit',["booking" => Booking::findOrFail($id)],["rooms" => Room::all()] );
     }
     
     /**
@@ -81,6 +81,9 @@ class BookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $booking = Booking::findOrFail($id);
+
         $request->validate([
             "guest" => ['required','string'],
     
@@ -92,7 +95,7 @@ class BookingController extends Controller
             "room_id" => ['required','numeric']
         ]); 
         
-        Booking::create([
+        $booking->update([
             'guest' => $request->input('guest'),
             'picture' => $request->input('picture'),
             'order_date' => now(),
