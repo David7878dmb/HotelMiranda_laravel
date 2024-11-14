@@ -19,10 +19,11 @@ class BookingSeeder extends Seeder
         $faker = FakerFactory::create('es_ES');
         $bookings = [];
 
-        $rooms = Room::all();
-
+        //$rooms = Room::all();
+       // $roomIds = Room::pluck('id');
         for ($i = 0; $i<$count; $i++){
             $bookings[] = [
+                
                 'guest' => $faker->name,
                 'picture' => $faker->imageUrl(640, 480, 'people', true),
                 'order_date' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -30,8 +31,8 @@ class BookingSeeder extends Seeder
                 'check_out' => Carbon::parse($faker->date())->addDays(rand(11, 20))->toDateString(),
                 'discount' => $faker->randomFloat(2, 0, 50),
                 'notes' => json_encode($faker->paragraphs(2)),
-                'room_id' => $rooms->random()->id,
-                'status' => collect(config('params.booking_status'))->random(),
+                'room_id' => 1,
+                'status' => $faker->randomElement(['Booked','Pending','Refund','Cancelled']),
                 
             ];
         }
