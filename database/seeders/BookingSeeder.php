@@ -8,6 +8,8 @@ use App\Models\Booking;
 use App\Models\Room;
 use Carbon\Carbon;
 use Faker\Factory as FakerFactory;
+use Illuminate\Support\Facades\DB;
+//use Illuminate\Database\MySqlConnection;
 
 class BookingSeeder extends Seeder
 {
@@ -19,8 +21,9 @@ class BookingSeeder extends Seeder
         $faker = FakerFactory::create('es_ES');
         $bookings = [];
 
-        //$rooms = Room::all();
-       // $roomIds = Room::pluck('id');
+       // $roomNum = DB::selectRaw("SELECT COUNT(*) FROM rooms");
+        $roomAll = Room::all();
+        
         for ($i = 0; $i<$count; $i++){
             $bookings[] = [
                 
@@ -31,7 +34,7 @@ class BookingSeeder extends Seeder
                 'check_out' => Carbon::parse($faker->date())->addDays(rand(11, 20))->toDateString(),
                 'discount' => $faker->randomFloat(2, 0, 50),
                 'notes' =>  implode(' ', $faker->paragraphs(2)),
-                'room_id' => 1,
+                'room_id' => $roomAll->random()->id,
                 'status' => $faker->randomElement(['Booked','Pending','Refund','Cancelled']),
                 
             ];
