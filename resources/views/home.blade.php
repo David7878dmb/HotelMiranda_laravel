@@ -12,6 +12,8 @@
     <a href="{{route('room.index')}}" class=" dark:text-gray-200 ">Room</a>
     <br></br>
     <a href="{{route('contact.index')}}" class=" dark:text-gray-200 ">Contact</a>
+    <br></br>
+    <a href="{{route('booking.index')}}" class=" dark:text-gray-200 ">Booking</a>
 </body>
 </x-app-layout>
 </html>

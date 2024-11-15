@@ -85,7 +85,6 @@ class BookingController extends Controller
 
         $request->validate([
             "guest" => ['required','string'],
-    
             "check_in" => ['required','date'],
             "check_out" =>['required','date'],
             "discount" => ['required','numeric'],
