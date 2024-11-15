@@ -7,7 +7,15 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/views/components/table.blade.php',
     ],
+    safelist: [
+        'bg-red-500',
+        'text-gray-700',
+        'hover:bg-gray-100',
+        'dark:bg-gray-800',
+        'dark:hover:bg-gray-700',
+      ],
 
     theme: {
         extend: {
@@ -19,3 +27,5 @@ export default {
 
     plugins: [forms],
 };
+
+
