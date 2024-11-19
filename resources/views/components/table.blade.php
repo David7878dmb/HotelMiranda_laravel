@@ -13,13 +13,13 @@
         <tr>
             @foreach(array_keys($data[0]) as $column)
                 @if ($column !== 'created_at' && $column !== 'updated_at')
-                    <th scope="col" class="px-6 py-3 text-left font-medium bg-red-500 text-white">
+                    <th scope="col" class="px-6 py-3 text-left font-medium bg-blue-100 dark:bg-red-500 text-black">
                         {{ ucfirst($column) }}
                     </th>
                 @endif
             @endforeach
             
-            <th scope="col" class="px-6 py-3 text-left font-medium bg-red-500 text-white">
+            <th scope="col" class="px-6 py-3 text-left font-medium bg-blue-100 text-black">
                 Detalles
             </th>
         </tr>
