@@ -11,15 +11,15 @@
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <div class="flex flex">
+                <div class="flex items-center">
     
-                <a href="{{route('activities.index')}}" class=" dark:text-black px-3">Activity</a>
+                <a href="{{route('activities.index')}}" class="text-colortexto dark:text-colortexto px-3 text-xl font-bold">Activity</a>
     
-                <a href="{{route('room.index')}}" class=" dark:text-black px-3">Room</a>
+                <a href="{{route('room.index')}}" class=" text-colortexto dark:text-colortexto px-3 text-xl font-bold">Room</a>
     
-                <a href="{{route('contact.index')}}" class=" dark:text-black px-3 ">Contact</a>
+                <a href="{{route('contact.index')}}" class=" text-colortexto dark:text-colortexto px-3 text-xl font-bold">Contact</a>
     
-                <a href="{{route('booking.index')}}" class=" dark:text-black px-3 ">Booking</a>
+                <a href="{{route('booking.index')}}" class=" text-colortexto dark:text-colortexto px-3 text-xl font-bold">Booking</a>
     
                 </div>
     

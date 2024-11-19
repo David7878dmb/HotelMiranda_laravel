@@ -21,6 +21,9 @@ export default {
         extend: {
             colors:{
                 colorfondo:'#342F2E',
+                colortexto:'#C1A079',
+                colorfondotabla:'#563B3A',
+                colortextotabla: '#261611'
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

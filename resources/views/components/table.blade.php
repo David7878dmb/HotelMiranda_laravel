@@ -8,18 +8,18 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900">
     
-<table class="min-w-full border-collapse border border-gray-200 bg-white shadow-md rounded-lg border">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<table class="min-w-full border-collapse border-gray-200 bg-white shadow-md rounded-lg border">
+    <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-colorfondo text-colorfondo">
         <tr>
             @foreach(array_keys($data[0]) as $column)
                 @if ($column !== 'created_at' && $column !== 'updated_at')
-                    <th scope="col" class="px-6 py-3 text-left font-medium bg-blue-100 dark:bg-red-500 text-black">
+                    <th scope="col" class="px-6 py-3 text-left dark:bg-colorfondotabla bg-colorfondotabla dark:text-colortextotabla text-colortextotabla font-bold">
                         {{ ucfirst($column) }}
                     </th>
                 @endif
             @endforeach
             
-            <th scope="col" class="px-6 py-3 text-left font-medium bg-blue-100 text-black">
+            <th scope="col" class="px-6 py-3 text-left font-medium dark:bg-colorfondo bg-colorfondo text-colortexto">
                 Detalles
             </th>
         </tr>
