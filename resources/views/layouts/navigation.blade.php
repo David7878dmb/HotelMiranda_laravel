@@ -7,19 +7,19 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav x-data="{ open: false }" class="dark:bg-gray-900 bg-gray-900 border-b border-gray-100 dark:border-gray-700">
+    <nav x-data="{ open: false }" class="shadow-xl text-yellow-100 dark:text-yellow-100 bg-red-400 dark:bg-red-400">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <div class="flex items-center">
+                <div class="flex items-center text-2xl font-bold">
     
-                <a href="{{route('activities.index')}}" class="text-gray-200 dark:text-gray-200 px-3 text-xl font-bold">Activity</a>
-    
-                <a href="{{route('room.index')}}" class=" text-gray-200 dark:text-gray-200 px-3 text-xl font-bold">Room</a>
-    
-                <a href="{{route('contact.index')}}" class=" text-gray-200 dark:text-gray-200 px-3 text-xl font-bold">Contact</a>
-    
-                <a href="{{route('booking.index')}}" class=" text-gray-200 dark:text-gray-200 px-3 text-xl font-bold">Booking</a>
+                    <a href="{{route('activities.index')}}" class="px-3 hover:shadow-xl hover:underline">Activity</a>
+        
+                    <a href="{{route('room.index')}}" class="px-3 hover:shadow-xl hover:underline">Room</a>
+        
+                    <a href="{{route('contact.index')}}" class="px-3 hover:shadow-xl hover:underline">Contact</a>
+        
+                    <a href="{{route('booking.index')}}" class="px-3 hover:shadow-xl hover:underline">Booking</a>
     
                 </div>
     
@@ -27,7 +27,7 @@
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-gray-700 dark:bg-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black dark:text-black hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150" style="background-color:#D74747">
                                 <div>{{ Auth::user()->name }}</div>
     
                                 <div class="ms-1">
@@ -38,7 +38,7 @@
                             </button>
                         </x-slot>
     
-                        <x-slot name="content">
+                        <x-slot name="content" class="dark:bg-gray-600">
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
@@ -57,18 +57,12 @@
                     </x-dropdown>
                 </div>
     
-                <!-- Hamburger -->
+
                 
             </div>
         </div>
     
-        <!-- Responsive Navigation Menu -->
-        
-    
-            <!-- Responsive Settings Options -->
             
-            </div>
-        </div>
     </nav>
     
 </body>
