@@ -37,14 +37,11 @@
                
             </article>
 
-            <div class="m-6 w-20" >
+            <div class="flex justify-around  items-center" >
                 <a href="{{route('booking.index')}}" class="my-6 bg-blue-600  hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-red-200">Index</a>
-            </div>  
-            <div class="m-6 w-20" >
+         
                 <a href="{{route('booking.edit', $booking->id)}}" class="my-6 bg-yellow-600  hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-red-200" >Edit</a>
-            </div>  
-          
-            <div class="m-6" >
+
                 <form method="POST" action="{{route('booking.destroy', $booking->id)}}">
                     @csrf
                     @method('DELETE')
