@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900">
     
-<table class="min-w-full border-collapse border border-gray-200 bg-white shadow-md rounded-lg border">
+<table class="min-w-full border-collapse border-gray-200 bg-white shadow-md rounded-lg border">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             @foreach(array_keys($data[0]) as $column)
@@ -34,7 +34,6 @@
                     </td>
                 @endif
             @endforeach
-
             <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200">
                 <a href="{{ route(request()->segment(1) . '.show', $row['id']) }}" 
                    class="text-blue-500 hover:text-blue-700">
