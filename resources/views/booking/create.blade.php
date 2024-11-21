@@ -19,7 +19,7 @@
     <br/><br/>
 
     <label for="discount">Discount (%):</label>
-    <input name="discount" type="number" step="0.01" min="0" max="100" placeholder="Discount" required />
+    <input name="discount" type="number" min="0" max="100" placeholder="Discount" required />
     <br/><br/>
 
     <label for="notes">Notes:</label>

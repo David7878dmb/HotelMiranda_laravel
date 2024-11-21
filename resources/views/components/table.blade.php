@@ -5,39 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 dark:bg-gray-900">
+<body >
     
-<table class="min-w-full border-collapse border border-gray-200 bg-white shadow-md rounded-lg border">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<table class="min-w-full border-collaps rounded-lg">
+    <thead class="text-lg uppercase text-center font-bold text-gray-900 dark:text-gray-900" style="background-color:#D74747">
         <tr>
             @foreach(array_keys($data[0]) as $column)
                 @if ($column !== 'created_at' && $column !== 'updated_at')
-                    <th scope="col" class="px-6 py-3 text-left font-medium bg-red-500 text-white">
+                    <th scope="col" class="px-6 py-3">
                         {{ ucfirst($column) }}
                     </th>
                 @endif
             @endforeach
             
-            <th scope="col" class="px-6 py-3 text-left font-medium bg-red-500 text-white">
+            <th scope="col" class="px-6 py-3 text-left dark:bg-colorfondo">
                 Detalles
             </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-xs uppercase text-center text-gray-800 dark:text-gray-800 font-bold" style="background-color:#6FB8B8">
         @foreach($data as $row)
-        <tr class="bg-white hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <tr>
             @foreach($row as $key => $value)
-                @if ($key !== 'created_at' && $key !== 'updated_at')
-                    <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200">
+
+                @if ($key === 'picture')
+                    <td>
+                        <img src="{{$value}}"/>
+                    </td>
+                @elseif ($key !== 'created_at' && $key !== 'updated_at')
+                    <td>
                         {{ $value }}
                     </td>
                 @endif
             @endforeach
 
-            <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200">
-                <a href="{{ route(request()->segment(1) . '.show', $row['id']) }}" 
-                   class="text-blue-500 hover:text-blue-700">
+            <td>
+                <a href="{{ route(request()->segment(1) . '.show', $row['id']) }}">
                     Info
                 </a>
             </td>
