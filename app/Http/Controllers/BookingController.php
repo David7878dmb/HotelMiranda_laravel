@@ -9,10 +9,23 @@ use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
+use App\Contracts\PaymentProvider;
 
 class BookingController extends Controller
 {
+
+    private function handlePayment(Booking $booking): string{
+        $paymentProvider = app(PaymentProvider::class);
+        $amount = 100*100;
+        $productName = 'Room Booking';
+        
+        $data = [
+            'amount' => $amount,
+            'product_name' => $productName,
+        ];
+        
+        return $paymentProvider->processPayment($data);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +33,7 @@ class BookingController extends Controller
     {
         return view('booking.index',['bookings' => Booking::all()]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -28,7 +41,7 @@ class BookingController extends Controller
     {
         
         return view('booking.create',["rooms" => Room::all()]);
-
+        
     }
     
     /**
@@ -37,7 +50,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         
-        $request->validate([
+        /* $request->validate([
             "guest" => ['required','string'],
             "check_in" => ['required','date'],
             "check_out" => ['required','date'],
@@ -45,21 +58,29 @@ class BookingController extends Controller
             "notes" => ['required','string'],
             "status" => ['required','string'],
             "room_id" => ['required','numeric']
-        ]);
-        
-        Booking::create([
-            'guest' => $request->input('guest'),
-            'picture' => $request->input('picture'),
-            'order_date' => now(),
-            'check_in' => $request->input('check_in'),
-            'check_out' => $request->input('check_out'),
-            'discount' => $request->input('discount'),
-            'notes' => json_encode($request->input('notes')), 
-            'status' => $request->input('status'),
-            'room_id' => $request->input('room_id')
-        ]);
-        
-        Mail::to('hello@example.com')->send(new BookingEmail(
+            ]);*/
+            
+            $booking = Booking::create([
+                'guest' => $request->input('guest'),
+                'picture' => $request->input('picture'),
+                'order_date' => now(),
+                'check_in' => $request->input('check_in'),
+                'check_out' => $request->input('check_out'),
+                'discount' => $request->input('discount'),
+                'notes' => json_encode($request->input('notes')), 
+                'status' => $request->input('status'),
+                'room_id' => $request->input('room_id')
+            ]);
+            
+            try {
+                $paymentUrl = $this->handlePayment($booking);
+            } catch (\Exception $e) {
+                dd($e);
+                return redirect()->back()->with('error', 'Error al procesar el pago: ' . $e->getMessage());
+            }
+            
+            
+            Mail::to('hello@example.com')->send(new BookingEmail(
             $request->input('guest'), 
             $request->input('room_id'), 
             $request->input('check_in'),
@@ -67,9 +88,11 @@ class BookingController extends Controller
             $request->input('discount')
         ));
 
-        return redirect(route("booking.index"))->with('success', 'Creado correctamente.');
+        return redirect()->away($paymentUrl);
         
     }
+    
+
     
     /**
      * Display the specified resource.
