@@ -32,7 +32,7 @@
 
                 @if ($key === 'picture')
                     <td>
-                        <img src="{{$value}}"/>
+                        <img src="{{$value}}" />
                     </td>
                 @elseif ($key !== 'created_at' && $key !== 'updated_at')
                     <td>

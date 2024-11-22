@@ -19,7 +19,7 @@ class Booking extends Model
         'status'
     ];
 
-    public function rooms() :BelongsTo{
+    public function room() :BelongsTo{
         return $this->belongsTo(Room::class);
     }
 }
