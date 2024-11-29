@@ -14,7 +14,7 @@ jobs:
       with:
         host: 15.237.46.184
         username: ubuntu
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{secrets.SSH_PRIVATE_KEY}}
         port: 22
         script: |
           cd /var/www/HotelMiranda-laravel
