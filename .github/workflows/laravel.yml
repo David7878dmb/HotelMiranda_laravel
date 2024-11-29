@@ -12,7 +12,7 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@v1.2.0
       with:
-        host: 172.31.10.206
+        host: 15.237.46.184
         username: ubuntu
         key: ${{secrets.SSH_PRIVATE_KEY}}
         port: 22
